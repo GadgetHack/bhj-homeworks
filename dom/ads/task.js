@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let index = 0; 
         function rotate() {
             cases[index].classList.remove('rotator__case_active');
-            index = (index + 1) % cases.length;
+            index = (cases[index].nextElementSibling) ? index +1 : 0;
             cases[index].classList.add('rotator__case_active');
+
         }
         setInterval(rotate, 1000);
     });
