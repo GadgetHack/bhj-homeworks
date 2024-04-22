@@ -10,7 +10,7 @@ const sendFiles = () => {
   const formData = new FormData(formElement);
   xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/upload');
 
-  xhr.onprogress = (event) => {
+  xhr.upload.onprogress = (event) => {
     progressElement.value = event.loaded;
     progressElement.max = event.total;
   };

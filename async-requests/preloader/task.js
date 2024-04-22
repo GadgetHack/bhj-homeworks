@@ -1,4 +1,3 @@
-
 const itemsDivElement = document.getElementById('items');
 const loaderElement = document.getElementById('loader');
 
@@ -8,6 +7,9 @@ xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.addEventListener('readystatechange', () => {
   if(xhr.readyState === XMLHttpRequest.DONE){
     const data = JSON.parse(xhr.responseText);
+    console.log(data.response.Valute);
+
+    itemsDivElement.innerHTML = '';
 
     for (let key in data.response.Valute) {
        const itemDivElement = document.createElement('div');
@@ -17,10 +19,10 @@ xhr.addEventListener('readystatechange', () => {
               ${key}
           </div>
           <div class="item__value">
-              32
+              ${data.response.Valute[key].Value}
           </div>
           <div class="item__currency">
-              руб.
+              ${data.response.Valute[key].Name}
           </div>
        `;
 

@@ -8,6 +8,7 @@ const refreshQuestions = () => {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.addEventListener('readystatechange', () => {
     if(xhr.readyState === XMLHttpRequest.DONE){
+      if (xhr.status === 200) { 
       pollAnswersElement.innerHTML = '';
 
       const { data } = JSON.parse(xhr.responseText);
@@ -28,6 +29,9 @@ const refreshQuestions = () => {
           refreshQuestions();
         }
       }
+    } else {
+      console.error('Ошибка при загрузке данных. Код состояния:', xhr.status);
+     }
     }
   });
    
